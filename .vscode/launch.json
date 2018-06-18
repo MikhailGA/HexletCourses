@@ -1,0 +1,40 @@
+{
+    // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
+    // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
+    // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "RunHTMLBuilder",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/bin/index.js",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "runtimeArgs": [
+              "--nolazy"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+              "${workspaceRoot}/dist/**/*.js"
+            ]
+          },
+          {
+            "name": "RunErrors",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/bin/errors.js",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "runtimeArgs": [
+              "--nolazy"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+              "${workspaceRoot}/dist/**/*.js"
+            ]
+          }
+    ]
+}
