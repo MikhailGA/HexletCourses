@@ -19,10 +19,11 @@ const files = new HexletFS();
 console.log(files.mkdirpSync('/etc/etc2.w'));
 console.log(files.findNode('/etc'));
 console.log(files.findNode('/etc/etc2.w'));
+console.log(files.statSync('/etc').isDirectory());
+console.log(files.statSync('/etc/etc2.w').isFile());
 // files.mkdirSync('/etc/nginx');
 // const etc = files.findNode('/etc');
-
+console.log(files.touchSync('/etc/etc1.w'));
+console.log(files.statSync('/etc/etc1.w').isFile());
 // console.log(files.statSync('/etc').isDirectory());
-
-// files.mkdirSync('/etc/nginx');
 // console.log(files.statSync('/etc/nginx').isDirectory());
