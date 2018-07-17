@@ -35,6 +35,22 @@
             "outFiles": [
               "${workspaceRoot}/dist/**/*.js"
             ]
+          },
+          {
+            "name": "RunAsynch",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/bin/asynch.js",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "runtimeArgs": [
+              "--nolazy"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+              "${workspaceRoot}/dist/**/*.js"
+            ]
           }
     ]
 }

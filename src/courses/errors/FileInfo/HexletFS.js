@@ -23,11 +23,6 @@ export default class {
     return current.getMeta().getStats();
   }
 
-  // touchSync(filepath) {
-  //   const { dir, base } = path.parse(filepath);
-  //   return this.findNode(dir).addChild(base, new File(base));
-  // }
-
   mkdirSync(filepath) {
     const { dir, base } = path.parse(filepath);
     return this.findNode(dir).addChild(base, new Dir(base));
@@ -56,11 +51,34 @@ export default class {
     return result;
   }
 
-  touchSync(dirPath) {
-    const result = pathIsOk(dirPath);
+  touchSync(filepath) {
+    const { ext } = path.parse(filepath);
+    if (ext === '') {
+      return false;
+    }
+    const result = pathIsOk(filepath);
     if (result) {
-      this.addItemRecursiv(dirPath, File, true);
+      this.addItemRecursiv(filepath, File, true);
     }
     return result;
+  }
+
+  readdirSync(dirPath) {
+    const { ext } = path.parse(dirPath);
+    if (ext !== '') {
+      return false;
+    }
+    const node = this.findNode(dirPath);
+    return (node) ? node.getChildren().reduce((acc, item) => [...acc, item.getKey()], []) : false;
+  }
+
+  rmdirSync(dirPath) {
+    const node = this.findNode(dirPath);
+    if (node && !node.hasChildren() && this.statSync(dirPath).isDirectory()) {
+      const key = node.getKey();
+      node.getParent().removeChild(key);
+      return true;
+    }
+    return false;
   }
 }
