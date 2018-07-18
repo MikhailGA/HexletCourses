@@ -15,15 +15,28 @@ import HexletFS from '../courses/errors/FileInfo/HexletFS';
 // console.log(path.normalize('/foo/bar//baz/asdf/quux/..'));
 
 const files = new HexletFS();
+files.mkdirSync('/etc');
+files.mkdirSync('/opt');
+files.touchSync('/opt/file.txt');
+files.mkdirpSync('/etc/nginx/conf.d');
+files.touchSync('/etc/nginx/nginx.conf');
+files.mkdirpSync('/usr/admin/docs');
 
-console.log(files.mkdirpSync('/etc/etc2.w'));
-console.log(files.findNode('/etc'));
-console.log(files.findNode('/etc/etc2.w'));
-console.log(files.statSync('/etc').isDirectory());
-console.log(files.statSync('/etc/etc2.w').isFile());
-// files.mkdirSync('/etc/nginx');
-// const etc = files.findNode('/etc');
-console.log(files.touchSync('/etc/etc1.w'));
-console.log(files.statSync('/etc/etc1.w').isFile());
-// console.log(files.statSync('/etc').isDirectory());
-// console.log(files.statSync('/etc/nginx').isDirectory());
+
+console.log(files.rmdirSync('/usr/admin/docs'));
+
+console.log(files.readdirSync('/usr/admin/docs'));
+
+
+console.log();
+
+// files.rmdirSync('/etc/nginx/conf.d');
+// expect(files.readdirSync('/etc/nginx')).toEqual(['nginx.conf']);
+
+// expect(files.rmdirSync('/etc/unknown')).toBe(false);
+// expect(files.rmdirSync('/etc/nginx')).toBe(false);
+
+// expect(files.rmdirSync('/etc/nginx/nginx.conf')).toBe(false);
+
+// files.rmdirSync('/usr/admin/docs');
+// expect(files.readdirSync('/usr/admin/docs')).toBe(false);
