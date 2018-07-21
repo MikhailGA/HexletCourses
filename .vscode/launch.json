@@ -51,6 +51,22 @@
             "outFiles": [
               "${workspaceRoot}/dist/**/*.js"
             ]
+          },
+          {
+            "name": "RunFSM",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/bin/fsm.js",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "runtimeArgs": [
+              "--nolazy"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+              "${workspaceRoot}/dist/**/*.js"
+            ]
           }
     ]
 }
