@@ -1,46 +1,17 @@
-import AlarmClock from '../courses/fsm/clock/AlarmClock';
+import { init, cancel } from '../courses/fsm/order/solution';
 
-const clock = new AlarmClock();
+const order = init([]);
 
-clock.on('PushButtonH', () => { console.log('Push H'); });
-clock.on('PushButtonM', () => { console.log('Push M'); });
-clock.on('PushButtonMode', () => { console.log('Push Mode'); });
-clock.on('PushButtonLongMode', () => { console.log('Push long Mode'); });
+order.accept();
+order.ship();
 
-for (let i = 0; i < 18 * 60; i += 1) {
-  clock.tick();
-}
+console.log(order.state);
+console.log(order.history);
 
-console.log(clock.isAlarmTime());
-console.log(clock.getCurrentMode());
-// expect(clock.isAlarmTime()).toBe(true);
-// expect(clock.getCurrentMode()).toBe('clock');
-clock.clickM();
-clock.clickH();
+cancel(order);
 
-clock.tick();
-console.log(clock.getCurrentMode());
-// expect(clock.getCurrentMode()).toBe('clock');
-
-
-// console.log(`${clock.hours()}:${clock.minutes()}`);
-// console.log(`${clock.alarmHours()}:${clock.alarmMinutes()}`);
-
-// console.log(clock.isAlarmOn());
-// clock.longClickMode();
-// console.log(clock.isAlarmOn());
-
-// console.log(clock.getCurrentMode());
-// console.log(clock.isAlarmTime());
-// clock.tick();
-
-// console.log(clock.getCurrentMode());
-// console.log(`${clock.hours()}:${clock.minutes()}`);
-// console.log(`${clock.alarmHours()}:${clock.alarmMinutes()}`);
-// console.log(clock.isAlarmTime());
-
-// clock.tick();
-// console.log(`${clock.hours()}:${clock.minutes()}`);
-// console.log(`${clock.alarmHours()}:${clock.alarmMinutes()}`);
-// console.log(clock.getCurrentMode());
-// console.log(clock.isAlarmTime());
+console.log(order.state);
+order.history.forEach((element) => {
+  const { state, createdAt } = element;
+  console.log(`${state} - ${createdAt}`);
+});
