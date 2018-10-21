@@ -23,7 +23,6 @@ export default (queryParams) => {
   const queryStringParams = mergeParams.toString() === '' ? '' : `?${mergeParams.toString()}`;
 
   const options = {
-    // host: myURL.host,
     hostname: myURL.hostname,
     port: myURL.port,
     path: `${myURL.pathname}${queryStringParams}`,

@@ -83,6 +83,22 @@
             "outFiles": [
               "${workspaceRoot}/dist/**/*.js"
             ]
+          },
+          {
+            "name": "RunHttpServer",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/bin/httpServer.js",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "runtimeArgs": [
+              "--nolazy"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+              "${workspaceRoot}/dist/**/*.js"
+            ]
           }
     ]
 }

@@ -1,0 +1,19 @@
+extends ../layouts/app.pug
+
+block content
+  //- BEGIN (write your solution here)
+  .row.mt-3
+    .col-sm-4.mx-auto
+      h3.text-xs-center Autentification form
+      form(action='/session' method='post')
+        .row.form-group
+          .col-sm
+            input.form-control(name='nickname' placeholder='nickname' value=form.nickname)
+        .row.form-group
+          .col-sm
+            input.form-control(name='password' type='password' placeholder='password')
+          if errors.message
+            .text-warning= errors.message
+        .form-group
+          button.btn.btn-success.btn-block(type='submit') Sign in
+  //- END
